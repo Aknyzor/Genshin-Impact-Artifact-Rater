@@ -8,11 +8,11 @@ The project is still under testing... bugs/issues are possible.
 To run the program, java must be installed on the computer!
 
 # The rating is simple:
-* Sub score less than 35: Disgusting (artifact is too bad)
-* Sub score greater than 35 and less than or equal to 55: Bad
-* Sub score greater than 55 and less than or equal to 75: Good
-* Sub score greather than 75 and less than or equal to 100: Very Good (excellent artifact and worth keeping)
-* Sub score greather than 100: Legendary (rare artifact and must keep!)
+* Score less than 35: Disgusting (artifact is too bad)
+* Score greater than 35 and less than or equal to 55: Bad
+* Score greater than 55 and less than or equal to 75: Good
+* Score greather than 75 and less than or equal to 100: Very Good (excellent artifact and worth keeping)
+* Score greather than 100: Legendary (rare artifact and must keep!)
 
 # Images
 ![image](https://github.com/Aknyzor/Genshin-Impact-Artifact-Rater/assets/61836772/b46ba44d-cbfb-49c5-9d42-385b770d5091)

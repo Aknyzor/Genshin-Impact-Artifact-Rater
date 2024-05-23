@@ -38,6 +38,7 @@ public class Main {
             resultPanel.setLayout(new BorderLayout());
             resultPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+            JButton addStatButton = new JButton("Add Stat");
             JButton calculateButton = new JButton("Calculate");
             JButton themeButton = new JButton("");
             JComboBox<StatContainerType> statContainerTypeComboBox = new JComboBox<>(StatContainerType.values());
@@ -54,6 +55,18 @@ public class Main {
                 levelComboBox.addItem(i);
             }
 
+            addStatButton.addActionListener(e -> {
+                if (statPanels.size() < 5) {
+                    StatPanel statPanel = new StatPanel();
+                    statPanels.add(statPanel);
+                    inputPanel.add(statPanel);
+                    frame.revalidate();
+                    frame.repaint();
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Maximum number of stats reached!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            });
+
             calculateButton.addActionListener(e -> {
                 if (statPanels.size() < 5) {
                     JOptionPane.showMessageDialog(frame, "At least 5 stats are required to calculate!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -62,7 +75,7 @@ public class Main {
 
                 int level = (Integer) levelComboBox.getSelectedItem();
                 if (level == 0) {
-                    JOptionPane.showMessageDialog(frame, "At least 1 level is required to calculate!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "At least 1 level are required to calculate!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
@@ -83,18 +96,19 @@ public class Main {
                     ArtifactScore artifactScore = new ArtifactScore();
                     ArtifactScoreResult result = artifactScore.score(artifact);
 
+
                     double overallScore = result.getSubScorePercent() * 100;
                     String feedback = null;
 
                     if (overallScore <= 25) {
                         feedback = "<font color='red'>Disgusting</font>";
-                    } else if (overallScore > 25 && overallScore <= 40) {
+                    }else if (overallScore > 25 && overallScore <= 40) {
                         feedback = "<font color='red'>Bad</font>";
-                    } else if (overallScore > 40 && overallScore <= 75) {
+                    }else if (overallScore > 40 && overallScore <= 75) {
                         feedback = "<font color='green'>Good</font>";
-                    } else if (overallScore > 75 && overallScore <= 90) {
+                    }else if (overallScore > 75 && overallScore <= 90) {
                         feedback = "<font color='green'>Very Good</font>";
-                    } else if (overallScore > 90) {
+                    }else if (overallScore > 90) {
                         feedback = "<font color='yellow'>Legendary</font>";
                     }
 
@@ -104,11 +118,13 @@ public class Main {
                             feedback
                     );
 
+
                     resultLabel.setText(resultText);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(frame, "Please enter valid numbers!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
+
 
             themeButton.setIcon(createIcon("/light-mode.png"));
             themeButton.setPreferredSize(new Dimension(50, 50));
@@ -151,6 +167,7 @@ public class Main {
 
             controlPanel.add(new JLabel("Artifact Level:"));
             controlPanel.add(levelComboBox);
+            controlPanel.add(addStatButton);
             controlPanel.add(calculateButton);
             controlPanel.add(themeButton);
 
@@ -159,13 +176,6 @@ public class Main {
             frame.add(controlPanel, BorderLayout.NORTH);
             frame.add(new JScrollPane(inputPanel), BorderLayout.CENTER);
             frame.add(resultPanel, BorderLayout.SOUTH);
-
-            // Dodavanje unapred postavljenih panela za statistike
-            for (int i = 0; i < 5; i++) {
-                StatPanel statPanel = new StatPanel(i == 0 ? "Main Stats" : "Sub Stats");
-                statPanels.add(statPanel);
-                inputPanel.add(statPanel);
-            }
 
             frame.setVisible(true);
         });
@@ -183,13 +193,26 @@ public class Main {
         private final JComboBox<StatType> statTypeComboBox;
         private final JTextField statValueField;
 
-        public StatPanel(String label) {
+        public StatPanel() {
             this.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-            this.add(new JLabel(label + ":"));
             statTypeComboBox = new JComboBox<>(StatType.values());
             statValueField = new JTextField(5);
+            JButton removeButton = new JButton("Remove");
+            removeButton.addActionListener(e -> {
+                Container parent = this.getParent();
+                parent.remove(this);
+                parent.revalidate();
+                parent.repaint();
+                for (int i = 0; i < statPanels.size(); i++) {
+                    if (statPanels.get(i) == this) {
+                        statPanels.remove(i);
+                        break;
+                    }
+                }
+            });
             this.add(statTypeComboBox);
             this.add(statValueField);
+            this.add(removeButton);
             this.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
         }
 
@@ -268,5 +291,15 @@ public class Main {
             }
         }
         return filteredTypes.toArray(new ArtifactSetType[0]);
+    }
+
+    private static boolean containsBaseStat() {
+        for (StatPanel statPanel : statPanels) {
+            StatType statType = (StatType) statPanel.getStatTypeComboBox().getSelectedItem();
+            if (statType.name().contains("BASE")) {
+                return true;
+            }
+        }
+        return false;
     }
 }

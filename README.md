@@ -1,6 +1,6 @@
 # Genshin-Impact-Artifact-Rater
 
-Base on [link](https://github.com/Kok3995/Genshin-Artifact-Rater-Java)
+Base on [Genshin-Artifact-Rater-Java](https://github.com/Kok3995/Genshin-Artifact-Rater-Java)
 
 For now, the option is avaible only for known and the latest artifacts.
 The project is still under testing... bugs/issues are possible.

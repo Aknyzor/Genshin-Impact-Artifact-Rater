@@ -73,11 +73,6 @@ public class Main {
                     return;
                 }
 
-                if (!containsBaseStat()) {
-                    JOptionPane.showMessageDialog(frame, "At least one stat must contain 'base' in its name!", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
                 int level = (Integer) levelComboBox.getSelectedItem();
                 if (level == 0) {
                     JOptionPane.showMessageDialog(frame, "At least 1 level are required to calculate!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -102,25 +97,23 @@ public class Main {
                     ArtifactScoreResult result = artifactScore.score(artifact);
 
 
-                    double overallScore = result.getSubScore() * 100;
+                    double overallScore = result.getSubScorePercent() * 100;
                     String feedback = null;
 
-                    if (overallScore <= 30) {
+                    if (overallScore <= 25) {
                         feedback = "<font color='red'>Disgusting</font>";
-                    }else if (overallScore > 30 && overallScore <= 40) {
+                    }else if (overallScore > 25 && overallScore <= 40) {
                         feedback = "<font color='red'>Bad</font>";
-                    }else if (overallScore > 40 && overallScore <= 55) {
+                    }else if (overallScore > 40 && overallScore <= 75) {
                         feedback = "<font color='green'>Good</font>";
-                    }else if (overallScore > 55 && overallScore <= 65) {
+                    }else if (overallScore > 75 && overallScore <= 90) {
                         feedback = "<font color='green'>Very Good</font>";
-                    }else if (overallScore > 65) {
+                    }else if (overallScore > 90) {
                         feedback = "<font color='yellow'>Legendary</font>";
                     }
 
                     String resultText = String.format(
-                            "<html>Score: %s (%s)<br>Main Score: %s (%s)<br>Sub Score: %s (%s)<br>Feedback: %s</html>",
-                            ordinal(result.getScore() * 100), percent(result.getScorePercent()),
-                            ordinal(result.getMainScore() * 100), percent(result.getMainScorePercent()),
+                            "<html>Score: %s (%s)<br>Feedback: %s</html>",
                             ordinal(result.getSubScore() * 100), percent(result.getSubScorePercent()),
                             feedback
                     );

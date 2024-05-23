@@ -2,12 +2,9 @@ package me.aknyzor;
 
 public class Stat {
     private static final long ORDINAL_STAT =
-            StatType.ATK_BASE.getVal() |
-                    StatType.ATK_FLAT.getVal() |
+            StatType.ATK_FLAT.getVal() |
                     StatType.ELEMENTAL_MASTERY.getVal() |
-                    StatType.HP_BASE.getVal() |
                     StatType.HP_FLAT.getVal() |
-                    StatType.DEF_BASE.getVal() |
                     StatType.DEF_FLAT.getVal();
 
     protected double value;

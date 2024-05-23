@@ -10,7 +10,7 @@ To run the program, java must be installed on the computer!
 # The rating is simple:
 * Score less than 25: Disgusting (artifact is too bad)
 * Score greater than 25 and less than or equal to 40: Bad
-* Score greater than 40 and less than or equal to 75: Good
+* Score greater than 40 and less than or equal to 75: Good (acceptable, but consider replacing it in the future)
 * Score greather than 75 and less than or equal to 90: Very Good (excellent artifact and worth keeping)
 * Score greather than 90: Legendary (rare artifact and must keep!)
 

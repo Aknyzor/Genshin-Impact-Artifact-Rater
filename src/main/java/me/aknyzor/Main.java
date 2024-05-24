@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -27,17 +28,23 @@ public class Main {
             frame.setLayout(new BorderLayout(10, 10));
             frame.setLocationRelativeTo(null);
 
+            ImageIcon icon = createIcon("/logo.png");
+            frame.setIconImage(icon.getImage());
+
             JPanel inputPanel = new JPanel();
             inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
             inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            inputPanel.setBackground(new Color(40, 40, 40));
 
             JPanel controlPanel = new JPanel();
             controlPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
             controlPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+            controlPanel.setBackground(new Color(40, 40, 40));
 
             JPanel resultPanel = new JPanel();
             resultPanel.setLayout(new BorderLayout());
             resultPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            resultPanel.setBackground(new Color(40, 40, 40));
 
             JButton calculateButton = new JButton("Calculate");
             JButton themeButton = new JButton("");
@@ -161,7 +168,6 @@ public class Main {
             frame.add(controlPanel, BorderLayout.NORTH);
             frame.add(new JScrollPane(inputPanel), BorderLayout.CENTER);
             frame.add(resultPanel, BorderLayout.SOUTH);
-
             for (int i = 0; i < 5; i++) {
                 StatPanel statPanel;
                 if (i == 0) {
@@ -194,9 +200,18 @@ public class Main {
             this.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
             this.add(new JLabel(label + ":"));
             statTypeComboBox = new JComboBox<>(label.equals("Main Stats") ? StatType.values() : StatType.valuesWithoutExcluded());
+            statTypeComboBox.setPreferredSize(new Dimension(150, 30));
+            statTypeComboBox.setBackground(new Color(60, 60, 60));
+            statTypeComboBox.setForeground(Color.WHITE);
             statValueField = new JTextField(5);
+            statValueField.setPreferredSize(new Dimension(70, 30));
+            statValueField.setBackground(new Color(60, 60, 60));
+            statValueField.setForeground(Color.WHITE);
+            Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
+            statValueField.setBorder(border);
             this.add(statTypeComboBox);
             this.add(statValueField);
+            this.setBackground(new Color(40, 40, 40));
             this.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
         }
 

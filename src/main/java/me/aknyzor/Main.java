@@ -1,7 +1,6 @@
 package me.aknyzor;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -47,7 +46,6 @@ public class Main {
             resultPanel.setBackground(new Color(40, 40, 40));
 
             JButton calculateButton = new JButton("Calculate");
-            JButton themeButton = new JButton("");
             JComboBox<StatContainerType> statContainerTypeComboBox = new JComboBox<>(StatContainerType.values());
             statContainerTypeComboBox.setRenderer(new StatContainerTypeRenderer());
             JComboBox<ArtifactSetType> artifactSetTypeComboBox = new JComboBox<>(getFilteredArtifactSetTypes(RarityType.FIVE));
@@ -119,23 +117,6 @@ public class Main {
                 }
             });
 
-            themeButton.setIcon(createIcon("/light-mode.png"));
-            themeButton.setPreferredSize(new Dimension(50, 50));
-            themeButton.setContentAreaFilled(false);
-            themeButton.setBorderPainted(false);
-            themeButton.setFocusPainted(false);
-
-            boolean[] darkTheme = {true};
-            themeButton.addActionListener(e -> {
-                darkTheme[0] = !darkTheme[0];
-                if (darkTheme[0]) {
-                    FlatDarkLaf.setup();
-                } else {
-                    FlatLightLaf.setup();
-                }
-                SwingUtilities.updateComponentTreeUI(frame);
-            });
-
             controlPanel.add(new JLabel("Stat Container Type:"));
             controlPanel.add(statContainerTypeComboBox);
 
@@ -161,7 +142,6 @@ public class Main {
             controlPanel.add(new JLabel("Artifact Level:"));
             controlPanel.add(levelComboBox);
             controlPanel.add(calculateButton);
-            controlPanel.add(themeButton);
 
             resultPanel.add(resultLabel, BorderLayout.CENTER);
 

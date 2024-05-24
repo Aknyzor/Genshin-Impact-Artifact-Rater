@@ -76,4 +76,20 @@ public enum StatType implements OrdinalEnum {
     public static StatType fromVal(long val) {
         return (StatType)map.get(val);
     }
+
+    public static StatType[] valuesWithoutExcluded() {
+        List<StatType> valuesList = new ArrayList<>();
+        for (StatType stat : StatType.values()) {
+            if (!isExcluded(stat)) {
+                valuesList.add(stat);
+            }
+        }
+        return valuesList.toArray(new StatType[0]);
+    }
+
+    private static boolean isExcluded(StatType stat) {
+        return stat == StatType.PYRO_BONUS || stat == StatType.HYDRO_BONUS || stat == StatType.DENDRO_BONUS
+                || stat == StatType.ELECTRO_BONUS || stat == StatType.CRYO_BONUS || stat == StatType.PHYSICAL_BONUS
+                || stat == StatType.ANEMO_BONUS || stat == StatType.GEO_BONUS || stat == StatType.HEALING_BONUS;
+    }
 }

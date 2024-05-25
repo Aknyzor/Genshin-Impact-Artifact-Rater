@@ -16,6 +16,7 @@ public class Main {
 
     static List<StatPanel> mainStatPanels = new ArrayList<>();
     static List<StatPanel> subStatPanels = new ArrayList<>();
+    static JComboBox<Character> characterComboBox;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -59,6 +60,8 @@ public class Main {
             for (int i = 0; i <= 20; i++) {
                 levelComboBox.addItem(i);
             }
+
+            characterComboBox = new JComboBox<>(Character.values());
 
             calculateButton.addActionListener(e -> {
                 int level = (Integer) levelComboBox.getSelectedItem();
@@ -116,6 +119,9 @@ public class Main {
                     JOptionPane.showMessageDialog(frame, "Please enter valid numbers!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
+
+            controlPanel.add(new JLabel("Character:"));
+            controlPanel.add(characterComboBox);
 
             controlPanel.add(new JLabel("Stat Container Type:"));
             controlPanel.add(statContainerTypeComboBox);
@@ -270,5 +276,17 @@ public class Main {
             }
         }
         return filteredTypes.toArray(new ArtifactSetType[0]);
+    }
+
+    enum Character {
+        ALBEDO,
+        ALHAITHAM,
+        ALOY,
+        AMBER,
+        ARLECCHINO,
+        AYAKA,
+        AYATO,
+        BAIZHU,
+        BARBARA
     }
 }

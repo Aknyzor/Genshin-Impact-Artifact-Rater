@@ -55,21 +55,77 @@ public class ArtifactScore {
         defaultWeights.put(StatType.HP_PERCENT, 0d);
         defaultWeights.put(StatType.DEF_FLAT, 0d);
         defaultWeights.put(StatType.DEF_PERCENT, 0d);
-        defaultWeights.put(StatType.ATK_FLAT, 0.5d);
-        defaultWeights.put(StatType.ATK_PERCENT, 1d);
-        defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
-        defaultWeights.put(StatType.ELEMENTAL_MASTERY, 0.5d);
-        defaultWeights.put(StatType.PHYSICAL_BONUS, 1d);
-        defaultWeights.put(StatType.CRIT_RATE, 1d);
-        defaultWeights.put(StatType.CRIT_DMG, 1d);
-        defaultWeights.put(StatType.PYRO_BONUS, 1d);
-        defaultWeights.put(StatType.HYDRO_BONUS, 1d);
-        defaultWeights.put(StatType.CRYO_BONUS, 1d);
-        defaultWeights.put(StatType.ELECTRO_BONUS, 1d);
-        defaultWeights.put(StatType.GEO_BONUS, 1d);
-        defaultWeights.put(StatType.ANEMO_BONUS, 1d);
-        defaultWeights.put(StatType.DENDRO_BONUS, 1d);
+        defaultWeights.put(StatType.ATK_FLAT, 0d);
+        defaultWeights.put(StatType.ATK_PERCENT, 0d);
+        defaultWeights.put(StatType.ENERY_RECHARGE, 0d);
+        defaultWeights.put(StatType.ELEMENTAL_MASTERY, 0d);
+        defaultWeights.put(StatType.PHYSICAL_BONUS, 0d);
+        defaultWeights.put(StatType.CRIT_RATE, 0d);
+        defaultWeights.put(StatType.CRIT_DMG, 0d);
+        defaultWeights.put(StatType.PYRO_BONUS, 0d);
+        defaultWeights.put(StatType.HYDRO_BONUS, 0d);
+        defaultWeights.put(StatType.CRYO_BONUS, 0d);
+        defaultWeights.put(StatType.ELECTRO_BONUS, 0d);
+        defaultWeights.put(StatType.GEO_BONUS, 0d);
+        defaultWeights.put(StatType.ANEMO_BONUS, 0d);
+        defaultWeights.put(StatType.DENDRO_BONUS, 0d);
         defaultWeights.put(StatType.HEALING_BONUS, 0d);
+
+        if (Main.characterComboBox.getSelectedItem() == Main.Character.ALBEDO) {
+            defaultWeights.put(StatType.DEF_FLAT, 0.5d);
+            defaultWeights.put(StatType.DEF_PERCENT, 1d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.GEO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.ALHAITHAM) {
+            defaultWeights.put(StatType.ATK_PERCENT, 0.5d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
+            defaultWeights.put(StatType.ELEMENTAL_MASTERY, 1d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.DENDRO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.ALOY) {
+            defaultWeights.put(StatType.ATK_PERCENT, 1d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.CRYO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.AMBER) {
+            defaultWeights.put(StatType.ATK_PERCENT, 1d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 1d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.PYRO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.ARLECCHINO) {
+            defaultWeights.put(StatType.ATK_PERCENT, 1d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.PYRO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.AYAKA) {
+            defaultWeights.put(StatType.ATK_PERCENT, 1d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.CRYO_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.AYATO) {
+            defaultWeights.put(StatType.ATK_PERCENT, 1d);
+            defaultWeights.put(StatType.ENERY_RECHARGE, 0.5d);
+            defaultWeights.put(StatType.CRIT_RATE, 1d);
+            defaultWeights.put(StatType.CRIT_DMG, 1d);
+            defaultWeights.put(StatType.HYDRO_BONUS, 1d);
+            defaultWeights.put(StatType.HP_PERCENT, 0.5d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.BAIZHU) {
+            defaultWeights.put(StatType.ENERY_RECHARGE, 1d);
+            defaultWeights.put(StatType.HP_PERCENT, 1d);
+            defaultWeights.put(StatType.HP_FLAT, 0.5d);
+            defaultWeights.put(StatType.HEALING_BONUS, 1d);
+        }else if (Main.characterComboBox.getSelectedItem() == Main.Character.BARBARA) {
+            defaultWeights.put(StatType.ELEMENTAL_MASTERY, 1d);
+            defaultWeights.put(StatType.HP_PERCENT, 1d);
+            defaultWeights.put(StatType.HEALING_BONUS, 1d);
+        }
+
 
         return defaultWeights;
     }

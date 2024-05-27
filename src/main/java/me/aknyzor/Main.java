@@ -287,6 +287,15 @@ public class Main {
         AYAKA,
         AYATO,
         BAIZHU,
-        BARBARA
+        BARBARA,
+        BEIDOU,
+        BENNETT,
+        CANDACE,
+        CHARLOTTE,
+        CHEVREUSE,
+        CHIORI,
+        CHONGYUN,
+        COLLEI,
+        CYNO
     }
 }
